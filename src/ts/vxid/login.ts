@@ -6,7 +6,7 @@ export async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: "https://veron3373.github.io/STO/",
+      redirectTo: "https://veron3373.github.io/STOSuprunec/",
     },
   });
 
@@ -34,7 +34,7 @@ supabase.auth.onAuthStateChange(async (_event, session) => {
       }
 
       if (whitelist && whitelist.length > 0) {
-        window.location.href = "/STO/main.html"; // <-- ключовий момент
+        window.location.href = "/STOSuprunec/main.html"; // <-- ключовий момент
       } else {
         alert("Ваш email не дозволено для входу.");
         await supabase.auth.signOut();
