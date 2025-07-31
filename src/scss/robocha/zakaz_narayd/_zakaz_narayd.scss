@@ -1,0 +1,534 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.zakaz_narayd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.zakaz_narayd-header-info h1 {
+  padding: 0px;
+}
+
+.zakaz_narayd-modal-content {
+  background: #fff;
+  border-radius: 16px;
+  width: 90vw;
+  max-width: 1000px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeInUp 0.4s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.zakaz_narayd-modal-body {
+  padding: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+  max-height: calc(98vh - 48px);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.zakaz_narayd-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.zakaz_narayd-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 24px 10px 24px;
+  background-color: #004d26;
+  color: white;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  &-logo img {
+    max-height: 80px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+
+    h1 {
+      margin: 0;
+      font-weight: bold;
+      color: white;
+    }
+
+    p {
+      margin: 2px 0;
+      font-size: 14px;
+      color: white;
+    }
+  }
+}
+
+.zakaz_narayd-reason {
+  padding: 10px 24px 0 24px;
+
+  .zakaz_narayd-reason-line {
+    border-bottom: 1px solid black;
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+    padding-bottom: 6px;
+  }
+
+  .highlight {
+    outline: none;
+    min-width: 100px;
+  }
+}
+
+.zakaz_narayd-table-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 24px 0px 24px;
+  font-size: 15px;
+}
+
+.zakaz_narayd-table {
+  border-collapse: collapse;
+  font-family: sans-serif;
+
+  td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+
+    &:first-child {
+      font-weight: bold;
+      background-color: #f8f8f8;
+    }
+  }
+
+  &.left {
+    flex: 1 1 48%;
+    min-width: 300px;
+    order: 1;
+  }
+
+  &.right {
+    flex: 1 1 48%;
+    min-width: 300px;
+    order: 2;
+  }
+
+  .highlight {
+    color: red;
+    font-weight: bold;
+  }
+
+  .green {
+    color: #145214;
+    font-weight: bold;
+  }
+
+  .red {
+    color: #a30000;
+    font-weight: bold;
+  }
+}
+
+
+
+/* Додаємо ці стилі до існуючого CSS */
+.zakaz_narayd-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* Відступ від попереднього елемента */
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.zakaz_narayd-items-table th,
+.zakaz_narayd-items-table td {
+  border: 1px solid #ccc;
+  padding: 2px 5px;
+}
+
+/* .text-right,
+.text-right ,
+.zakaz_narayd-items-table th,
+.zakaz_narayd-items-table td{
+  font-size: 12px;
+  аааааа
+}
+
+ */
+
+.zakaz_narayd-items-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Вирівнювання для числових колонок */
+.zakaz_narayd-items-table .text-right {
+  text-align: right;
+  font-size: 15px;
+}
+.zakaz_narayd-table-container-value {
+  padding: 0px 24px;
+}
+
+.zakaz_narayd-table td {
+  border: 0px;
+  padding: 2px 2px;
+}
+.autocomplete-list {
+  border: 1px solid #ddd;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute; /* Важливо для позиціонування */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10000; /* Має бути вище інших елементів */
+}
+
+.autocomplete-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.autocomplete-item:hover,
+.autocomplete-item:focus {
+  background-color: #f0f0f0;
+}
+.add-row-container {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.add-row-button {
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  text-align: left;
+}
+
+.zakaz_narayd-sums-footer {
+  text-align: right;
+  padding: 0 24px 10px 24px;
+}
+
+.zakaz_narayd-sums-footer p {
+  margin: 5px 0;
+}
+
+.zakaz_narayd-sums-footer-sum {
+  font-weight: bold;
+}
+
+.zakaz_narayd-sums-footer-total {
+  font-weight: bold;
+  color: #1a73e8;
+  font-size: 1.1em;
+}
+
+.zakaz_narayd-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.action-button {
+  max-width: 150px;
+  height: 35px;
+  /* font-size: 16px; */
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+}
+
+.add-row-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.add-row-button:hover {
+  background-color: #45a049;
+}
+
+.close-act-button {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.close-act-button:hover {
+  background-color: #b71c1c;
+}
+
+
+.reason-container {
+  padding: 0 24px;
+}
+
+.zakaz_narayd-reason-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.print-button,
+.sklad {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    color: #007bff;
+  }
+
+  &:active {
+    transform: scale(1.1);
+    color: #0056b3;
+  }
+}
+.status-lock-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: #000; // або інший колір, якщо потрібно
+  padding: 0;
+  margin: 0 6px;
+}
+
+.status-lock-icon:hover {
+  transform: scale(1.2);
+  color: #007bff;
+}
+
+.status-lock-icon:active {
+  transform: scale(0.95);
+  color: #0056b3;
+}
+
+
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 240px; /* або інше значення під твій макет */
+  gap: 1rem;
+}
+
+.status-dates span {
+  white-space: nowrap;
+}
+
+.status-lock-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+
+/* У вашому файлі CSS */
+
+.closed-act-info {
+    font-size: 8px; /* Мінімальний розмір шрифту */
+    line-height: 1.3; /* Міжрядковий інтервал, щоб текст був читабельним */
+    padding: 0px 24px 24px 24px; /* 0 зверху, 24px справа, 24px знизу, 24px зліва */
+    margin: 0; /* Марджини 0 з усіх боків */
+    /* border: 1px solid #ccc;  Залишаємо рамку для візуального відокремлення */
+    margin-top: 20px; /* Залишаємо невеликий відступ зверху, якщо потрібно */
+    /* background-color: #f9f9f9; */
+    text-align: justify;
+}
+
+.closed-act-info p {
+    margin-top: 0;
+    margin-bottom: 3px; /* Відступ між параграфами 3px, як ви просили "між текстом" */
+}
+
+.closed-act-info p:last-child {
+    margin-bottom: 0; /* Щоб не було зайвого відступу в кінці */
+}
+
+.closed-act-info strong {
+    font-size: inherit; /* Забезпечує, що жирний текст також має розмір 8px */
+}
+
+.closed-act-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px; /* Невеликий відступ між текстом і таблицею */
+}
+
+.closed-act-info table td {
+    padding: 2px 0; /* Зменшив padding, щоб підняти Замовника/Виконавця */
+    border-bottom: none; /* Прибираємо нижню межу комірок, якщо вона є за замовчуванням */
+    vertical-align: top; /* Вирівнювання по верхньому краю для Замовника/Виконавця */
+}
+
+.closed-act-info table td:nth-child(2) {
+    padding-left: 20px; /* Додав відступ для Виконавця, щоб він був трішки правіше */
+}
+
+
+.closed-act-info table hr {
+    border: none;
+    border-top: 1px solid black;
+    margin-top: 20px; /* Зменшив margin-top, щоб підняти лінії */
+    margin-left: 0; /* Вирівнюємо лінію підпису по лівому краю */
+    margin-right: 0;
+    width: 100%; /* Забезпечуємо, що лінія займає всю доступну ширину комірки */
+}
+
+/* SCSS для закритого акту */
+
+.closed-act-info {
+    font-size: 8px; /* Мінімальний розмір шрифту */
+    line-height: 1.3; /* Міжрядковий інтервал, щоб текст був читабельним */
+    padding: 0 24px 24px 24px; /* 0 зверху, 24px справа, 24px знизу, 24px зліва */
+    margin: 0; /* Марджини 0 з усіх боків */
+    // border: 1px solid #ccc; /* Залишаємо рамку для візуального відокремлення */
+    margin-top: 20px; /* Залишаємо невеликий відступ зверху, якщо потрібно */
+    // background-color: #f9f9f9;
+    text-align: justify;
+
+    p {
+        margin-top: 0;
+        margin-bottom: 3px; /* Відступ між параграфами 3px, як ви просили "між текстом" */
+
+        &:last-child {
+            margin-bottom: 0; /* Щоб не було зайвого відступу в кінці */
+        }
+    }
+
+    strong {
+        font-size: inherit; /* Забезпечує, що жирний текст також має розмір 8px */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px; /* Невеликий відступ між текстом і таблицею */
+
+        td {
+            padding: 2px 0; /* Зменшив padding, щоб підняти Замовника/Виконавця */
+            border-bottom: none; /* Прибираємо нижню межу комірок, якщо вона є за замовчуванням */
+            vertical-align: top; /* Вирівнювання по верхньому краю для Замовника/Виконавця */
+
+            &:nth-child(2) {
+                padding-left: 20px; /* Додав відступ для Виконавця, щоб він був трішки правіше */
+            }
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid black;
+            margin-top: 20px; /* Зменшив margin-top, щоб підняти лінії */
+            margin-left: 0; /* Вирівнюємо лінію підпису по лівому краю */
+            margin-right: 0;
+            width: 100%; /* Забезпечуємо, що лінія займає всю доступну ширину комірки */
+        }
+    }
+}
+
+// Додатковий клас, якщо потрібно відокремити рядок з "З об'ємом та вартістю робіт згоден"
+.agreement-text {
+    padding-top: 5px; // Або інший мінімальний падінг, якщо потрібен
+}
+
+// Клас для лінії підпису, якщо хочете її стилізувати окремо
+.signature-line {
+    border-top: 1px solid black;
+    margin-top: 20px; /* Або інший відступ */
+    margin-left: 0;
+    margin-right: 0;
+    width: 100px;
+}
+
+
+/* Для контейнера модального вікна */
+.modal-overlay { /* або як у вас називається обгортка модального вікна */
+    display: flex;
+    justify-content: center; /* Центрує по горизонталі */
+    align-items: center;     /* Центрує по вертикалі */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+/* Для самого модального контенту */
+.modal-content { /* або ID вашого ZAKAZ_NARAYD_MODAL_ID */
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px; /* Або будь-яка інша бажана ширина */
+    width: 90%;
+    margin: auto; /* Це також допоможе центрувати, якщо display: flex не використовується на батьківському елементі або не працює */
+    box-sizing: border-box; /* Важливо для padding та width */
+}
+
+
+.zakaz_narayd-reason-line .print-button,
+.zakaz_narayd-reason-line .sklad {
+  vertical-align: middle;
+}
