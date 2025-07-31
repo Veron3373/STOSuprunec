@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Основний</title>
+<!--     <link rel="stylesheet" href="../src/scss/main.scss" />
+    <link rel="stylesheet" href="../src/css/search-styles.css" /> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script type="module" crossorigin src="/STOSuprunec/assets/main-BUReqHkE.js"></script>
+  <link rel="modulepreload" crossorigin href="/STOSuprunec/assets/supabaseClient-tVnfLEAC.js">
+  <link rel="stylesheet" crossorigin href="/STOSuprunec/assets/supabaseClient-HqKDUlTP.css">
+</head>
+
+<body class="page-2">
+
+    <ul class="main-menu">
+        <li><a href="#" class="menu-link" onclick="window.location.href='/STO/'">Вихід</a></li>
+        <li><a href="#" class="menu-link" data-action="openSettings">Налаштування</a></li>
+        <li><a href="#" class="menu-link all_other_bases" data-action="openClient">Додати</a></li>
+        <li class="active"><a href="#" class="menu-link" data-action="openHome">Наряд</a></li>
+        <li><input type="text" id="dateRangePicker" readonly /></li>
+        <li class="search-container">
+            <span id="searchIcon" class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-input" placeholder="Пошук..." />
+        </li>
+    </ul>
+
+    <a href="#" id="open-modal-sakaz_narad"></a>
+    <a href="#" id="open-modal-create-sakaz_narad"></a>
+    <a href="#" id="open-modal-all_other_bases"></a>
+    <a href="#" id="open-modal-settings"></a>
+
+    <div id="table-container-modal-sakaz_narad"></div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+
+</body>
+<p class="alim">Алім 2025 / 1.0.0</p>
+</html>
