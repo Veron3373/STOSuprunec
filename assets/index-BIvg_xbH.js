@@ -1,4 +1,4 @@
-import{s as Rn}from"./supabaseClient-B7prqs4z.js";import{r as kv,a as Td}from"./react-1zw1pNgy.js";import"./supabase-DN1VNG-x.js";var wc={exports:{}},ce={};/**
+import{s as Rn}from"./supabaseClient-q6XlWqe_.js";import{r as kv,a as Td}from"./react-1zw1pNgy.js";import"./supabase-DN1VNG-x.js";var wc={exports:{}},ce={};/**
  * @license React
  * react-jsx-runtime.production.js
  *
