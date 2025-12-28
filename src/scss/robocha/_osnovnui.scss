@@ -1,0 +1,97 @@
+body.page-2 {
+  background-image: url("https://toyota.com.ua/assets/cache_image/qnews/rav4-hybrid-model-1905x700_1905x700_077.jpg.webp");
+  background-size: cover; /* Забезпечує покриття всього фону */
+  background-position: center; /* Центрує фонове зображення */
+}
+
+.on {
+  height: 0vh;
+}
+
+body.page-2 .button {
+  background-color: #28a745;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%; /* кругла форма */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+  z-index: 100;
+}
+
+body.page-2,
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+.alim {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: gray;
+  background-color: transparent;
+  z-index: -2;
+}
+
+/* --- Стилі для пошукового інпуту та іконки --- */
+.search-container {
+    display: flex; /* Для вирівнювання іконки та інпуту */
+    align-items: center; /* Центруємо по вертикалі */
+    position: relative; /* Важливо для позиціонування інпуту */
+}
+
+.search-icon {
+    font-size: 1.5rem; /* Збільшимо розмір іконки */
+    cursor: pointer;
+    color: #fff; /* Білий колір для іконки */
+    padding: 0 10px; /* Трохи відступу */
+    transition: transform 0.2s ease-in-out;
+    z-index: 20; /* Щоб іконка була над інпутом під час анімації */
+}
+
+.search-icon:hover {
+    transform: scale(1.1); /* Легкий ефект при наведенні */
+}
+
+.search-input {
+  /* Початкові стилі для прихованого стану */
+  width: 0; /* Початкова ширина */
+  padding: 0; /* Початковий відступ */
+  opacity: 0; /* Початкова прозорість */
+  visibility: hidden; /* Повністю прихований */
+  transition: width 0.3s ease-in-out, padding 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Анімація */
+
+  /* Стилі видимого стану (будуть застосовуватися jQuery) */
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  /* transition тут не потрібен, бо jQuery управляє анімацією */
+}
+
+.search-input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+.search-input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
